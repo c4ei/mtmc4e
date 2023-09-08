@@ -276,11 +276,10 @@ then :
     printf "%s\n" "$0: be upgraded to zsh 4.3.4 or later."
   else
     printf "%s\n" "$0: Please tell bug-autoconf@gnu.org and
-$0: https://github.com/mtc4ei-project/mtc4ei/issues
-$0: about your system, including any error possibly output
-$0: before this message. Then install a modern shell, or
-$0: manually run the script under such a shell if you do
-$0: have one."
+$0: https://github.com/mtc4ei-project/mtc4ei/issues about
+$0: your system, including any error possibly output before
+$0: this message. Then install a modern shell, or manually
+$0: run the script under such a shell if you do have one."
   fi
   exit 1
 fi
@@ -1777,8 +1776,7 @@ Optional Packages:
   --with-daemon           build mtc4eid daemon (default=yes)
   --with-incompatible-bdb allow using a bdb version other than 4.8
   --with-gui[=no|qt4|qt5|auto]
-                          build mtc4ei-qt GUI (default=auto, qt5 tried
-                          first)
+                          build mtc4ei-qt GUI (default=auto, qt5 tried first)
   --with-qt-incdir=INC_DIR
                           specify qt include path (overridden by pkgconfig)
   --with-qt-libdir=LIB_DIR
@@ -7923,7 +7921,7 @@ case $host_os in
     ;;
   darwin*)
     if test yes = "$GCC"; then
-      reload_cmds='$MTC4C $MTC4FLAGS -nostdlib $wl-r -o $output$reload_objs'
+      reload_cmds='$LTCC $LTCFLAGS -nostdlib $wl-r -o $output$reload_objs'
     else
       reload_cmds='$LD$reload_flag -o $output$reload_objs'
     fi
@@ -8910,10 +8908,10 @@ esac
 
 
 # If no C compiler was specified, use CC.
-MTC4C=${MTC4C-"$CC"}
+LTCC=${LTCC-"$CC"}
 
 # If no C compiler flags were specified, use CFLAGS.
-MTC4FLAGS=${MTC4FLAGS-"$CFLAGS"}
+LTCFLAGS=${LTCFLAGS-"$CFLAGS"}
 
 # Allow CC to be a program name with arguments.
 compiler=$CC
@@ -10307,9 +10305,9 @@ else $as_nop
 	# link flags.
 	rm -rf libconftest.dylib*
 	echo "int foo(void){return 1;}" > conftest.c
-	echo "$MTC4C $MTC4FLAGS $LDFLAGS -o libconftest.dylib \
+	echo "$LTCC $LTCFLAGS $LDFLAGS -o libconftest.dylib \
 -dynamiclib -Wl,-single_module conftest.c" >&5
-	$MTC4C $MTC4FLAGS $LDFLAGS -o libconftest.dylib \
+	$LTCC $LTCFLAGS $LDFLAGS -o libconftest.dylib \
 	  -dynamiclib -Wl,-single_module conftest.c 2>conftest.err
         _lt_result=$?
 	# If there is a non-empty error log, and "single_module"
@@ -10375,8 +10373,8 @@ else $as_nop
       cat > conftest.c << _LT_EOF
 int forced_loaded() { return 2;}
 _LT_EOF
-      echo "$MTC4C $MTC4FLAGS -c -o conftest.o conftest.c" >&5
-      $MTC4C $MTC4FLAGS -c -o conftest.o conftest.c 2>&5
+      echo "$LTCC $LTCFLAGS -c -o conftest.o conftest.c" >&5
+      $LTCC $LTCFLAGS -c -o conftest.o conftest.c 2>&5
       echo "$AR cr libconftest.a conftest.o" >&5
       $AR cr libconftest.a conftest.o 2>&5
       echo "$RANLIB libconftest.a" >&5
@@ -10384,8 +10382,8 @@ _LT_EOF
       cat > conftest.c << _LT_EOF
 int main() { return 0;}
 _LT_EOF
-      echo "$MTC4C $MTC4FLAGS $LDFLAGS -o conftest conftest.c -Wl,-force_load,./libconftest.a" >&5
-      $MTC4C $MTC4FLAGS $LDFLAGS -o conftest conftest.c -Wl,-force_load,./libconftest.a 2>conftest.err
+      echo "$LTCC $LTCFLAGS $LDFLAGS -o conftest conftest.c -Wl,-force_load,./libconftest.a" >&5
+      $LTCC $LTCFLAGS $LDFLAGS -o conftest conftest.c -Wl,-force_load,./libconftest.a 2>conftest.err
       _lt_result=$?
       if test -s conftest.err && $GREP force_load conftest.err; then
 	cat conftest.err >&5
@@ -10823,8 +10821,8 @@ old_CFLAGS=$CFLAGS
 
 # Set sane defaults for various variables
 test -z "$CC" && CC=cc
-test -z "$MTC4C" && MTC4C=$CC
-test -z "$MTC4FLAGS" && MTC4FLAGS=$CFLAGS
+test -z "$LTCC" && LTCC=$CC
+test -z "$LTCFLAGS" && LTCFLAGS=$CFLAGS
 test -z "$LD" && LD=ld
 test -z "$ac_objext" && ac_objext=o
 
@@ -11005,10 +11003,10 @@ lt_simple_link_test_code='int main(){return(0);}'
 
 
 # If no C compiler was specified, use CC.
-MTC4C=${MTC4C-"$CC"}
+LTCC=${LTCC-"$CC"}
 
 # If no C compiler flags were specified, use CFLAGS.
-MTC4FLAGS=${MTC4FLAGS-"$CFLAGS"}
+LTCFLAGS=${LTCFLAGS-"$CFLAGS"}
 
 # Allow CC to be a program name with arguments.
 compiler=$CC
@@ -15035,10 +15033,10 @@ if test yes != "$_lt_caught_CXX_error"; then
 
 
 # If no C compiler was specified, use CC.
-MTC4C=${MTC4C-"$CC"}
+LTCC=${LTCC-"$CC"}
 
 # If no C compiler flags were specified, use CFLAGS.
-MTC4FLAGS=${MTC4FLAGS-"$CFLAGS"}
+LTCFLAGS=${LTCFLAGS-"$CFLAGS"}
 
 # Allow CC to be a program name with arguments.
 compiler=$CC
@@ -33394,8 +33392,8 @@ predeps_CXX='`$ECHO "$predeps_CXX" | $SED "$delay_single_quote_subst"`'
 postdeps_CXX='`$ECHO "$postdeps_CXX" | $SED "$delay_single_quote_subst"`'
 compiler_lib_search_path_CXX='`$ECHO "$compiler_lib_search_path_CXX" | $SED "$delay_single_quote_subst"`'
 
-MTC4C='$MTC4C'
-MTC4FLAGS='$MTC4FLAGS'
+LTCC='$LTCC'
+LTCFLAGS='$LTCFLAGS'
 compiler='$compiler_DEFAULT'
 
 # A function that is used when there is no print builtin or printf.
@@ -34499,10 +34497,10 @@ old_postuninstall_cmds=$lt_old_postuninstall_cmds
 lock_old_archive_extraction=$lock_old_archive_extraction
 
 # A C compiler.
-MTC4C=$lt_CC
+LTCC=$lt_CC
 
-# MTC4C compiler flags.
-MTC4FLAGS=$lt_CFLAGS
+# LTCC compiler flags.
+LTCFLAGS=$lt_CFLAGS
 
 # Take the output of nm and produce a listing of raw symbols and C names.
 global_symbol_pipe=$lt_lt_cv_sys_global_symbol_pipe
