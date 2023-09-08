@@ -1,0 +1,12 @@
+cd ..
+cd mtmc4e/
+PATH=$(echo "$PATH" | sed -e 's/:\/mnt.*//g')
+sudo bash -c "echo 0 > /proc/sys/fs/binfmt_misc/status"
+cd depends
+make HOST=x86_64-w64-mingw32 -j 4
+cd ..
+./autogen.sh
+CONFIG_SITE=$PWD/depends/x86_64-w64-mingw32/share/config.site ./configure --prefix=/
+make -j 4
+make install DESTDIR=/home/dev/coin/exe/win/mtmc4e
+

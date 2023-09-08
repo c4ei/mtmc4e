@@ -1,0 +1,55 @@
+start 230906
+################################################
+git clone https://github.com/c4ei/bitcoin
+git checkout -b c4exBTC
+################################################
+sudo apt-get install build-essential libtool autotools-dev automake pkg-config bsdmainutils python3
+sudo apt-get install libevent-dev libboost-dev
+sudo apt install libsqlite3-dev
+
+sudo apt install libminiupnpc-dev libnatpmp-dev
+sudo apt-get install libzmq3-dev
+sudo apt install systemtap-sdt-dev
+sudo apt-get install libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools
+sudo apt install qtwayland5
+sudo apt-get install libqrencode-dev
+############## unix build ######################################################################
+https://github.com/mtc4ei-project/mtc4ei/blob/master/doc/build-unix.md#dependency-build-instructions-ubuntu--debian
+########################################################################################################################
+sudo apt-get install build-essential libtool autotools-dev automake pkg-config bsdmainutils python3 libssl-dev
+sudo apt-get install libevent-dev libboost-system-dev libboost-filesystem-dev libboost-test-dev libboost-thread-dev libfmt-dev
+sudo apt install libsqlite3-dev
+sudo apt-get install libminiupnpc-dev
+sudo apt-get install libzmq3-dev
+sudo apt-get install libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools
+sudo apt-get install libqrencode-dev
+########################################################################################################################
+################################################################################################
+DB 4.8을 사용하는 Debian에서 작동합니다
+./configure BDB_CFLAGS="-I${BDB_PREFIX}/include/" BDB_LIBS="-L${BDB_PREFIX}/lib/ -ldb_cxx-4.8"
+sudo apt-get install libboost-all-dev
+################################################
+cd /home/dev/coin/mtmc4e
+./autogen.sh
+./configure BDB_CFLAGS="-I${BDB_PREFIX}/include/" BDB_LIBS="-L${BDB_PREFIX}/lib/ -ldb_cxx-4.8"
+    Default 경우 ./configure
+    GUI가 필요하지 않은 경우 ./configure --without-gui
+    wallet 필요하지 않은 경우 ./configure --disable-wallet
+make -j 4
+make install DESTDIR=/home/dev/coin/exe/linux
+############## window build ######################
+PATH=$(echo "$PATH" | sed -e 's/:\/mnt.*//g') # strip out problematic Windows %PATH% imported var
+sudo bash -c "echo 0 > /proc/sys/fs/binfmt_misc/status" # Disable WSL support for Win32 applications.
+cd depends
+make HOST=x86_64-w64-mingw32
+cd ..
+./autogen.sh
+CONFIG_SITE=$PWD/depends/x86_64-w64-mingw32/share/config.site ./configure --prefix=/
+make -j 4
+sudo bash -c "echo 1 > /proc/sys/fs/binfmt_misc/status" # Enable WSL support for Win32 applications.
+make install DESTDIR=/home/dev/coin/exe/win
+make deploy
+################################################
+cd /home/dev/coin/exe/linux/usr/local/bin
+./bitcoin-qt -datadir=/home/dev/coin/exe/data -printtoconsole
+

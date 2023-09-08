@@ -1,0 +1,28 @@
+start.txt
+find ./ -type f -readable -writable -exec sed -i "s/Litecoin/WELSHcorgi/g" {} \;
+find ./ -type f -readable -writable -exec sed -i "s/MTC4Ei/WELSHCorgi/g" {} \;
+find ./ -type f -readable -writable -exec sed -i "s/MTC4/WELC/g" {} \;
+find ./ -type f -readable -writable -exec sed -i "s/mtc4ei/welshcorgi/g" {} \;
+find ./ -type f -readable -writable -exec sed -i "s/mtc4eid/welshcorgid/g" {} \;
+find ./ -type f -readable -writable -exec sed -i "s/mtc4eis/welshs/g" {} \;
+find ./ -type f -readable -writable -exec sed -i "s/wphotons/wwphotons/g" {} \;
+find ./ -type f -readable -writable -exec sed -i "s/MTC4EI/WELSHCORGI/g" {} \;
+find . -type f -print0 | xargs -0 sed -i 's/9336/9525/g'
+find . -type f -print0 | xargs -0 sed -i 's/9337/9535/g'
+find . -type f -print0 | xargs -0 sed -i 's/19336/19525/g'
+find . -type f -print0 | xargs -0 sed -i 's/19339/19535/g'
+
+23-09-08 ------------> cd /home/dev/coin/mtmc4e
+find ./ -type f -readable -writable -exec sed -i "s/Litecoin/MTC4ei/g" {} \;
+find ./ -type f -readable -writable -exec sed -i "s/MTC4Ei/MTC4Ei/g" {} \;
+find ./ -type f -readable -writable -exec sed -i "s/MTC4/MTC4/g" {} \;
+find ./ -type f -readable -writable -exec sed -i "s/mtc4ei/mtc4ei/g" {} \;
+find ./ -type f -readable -writable -exec sed -i "s/mtc4eid/mtc4eid/g" {} \;
+find ./ -type f -readable -writable -exec sed -i "s/mtc4eis/mtc4eis/g" {} \;
+find ./ -type f -readable -writable -exec sed -i "s/wphotons/wwphotons/g" {} \;
+find ./ -type f -readable -writable -exec sed -i "s/MTC4EI/MTC4EI/g" {} \;
+find . -type f -print0 | xargs -0 sed -i 's/9336/9336/g'
+find . -type f -print0 | xargs -0 sed -i 's/9337/9337/g'
+find . -type f -print0 | xargs -0 sed -i 's/19336/19336/g'
+find . -type f -print0 | xargs -0 sed -i 's/19339/19339/g'
+
