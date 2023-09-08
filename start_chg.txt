@@ -5,3 +5,42 @@ tcp포트 : 9535
 테스트넷
 rpc포트 : 19525
 tcp포트 : 19535
+
+#######################################################################################
+python2 genesis.py -a scrypt -z "mtmc4e started 20230907" -t 1694102461
+04ffff001d0104176d746d6334652073746172746564203230323330393037
+algorithm: scrypt
+### merkle hash: 44e2b60cecd9af0f16e4cc83c082d160a4c8ea5bbab2b123be57194aae5ccd22
+pszTimestamp: mtmc4e started 20230907
+pubkey: 04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f
+time: 1694102461
+bits: 0x1e0ffff0
+Searching for genesis hash..
+genesis hash found!
+### nonce: 931091
+### genesis hash: 18d136b00ef50e79eaa7345999dddf437f48f5c119c0b3554ba209d6497a675f
+#######################################################################################
+python2 genesis.py -a scrypt -z "mtmc4e test started 20230907" -t 1694102461
+04ffff001d01041c6d746d63346520746573742073746172746564203230323330393037
+algorithm: scrypt
+### merkle hash: c8e424b1df9a2a176ded77e782a29d05571ef4071dc5342e2b968c11982d7d8a
+pszTimestamp: mtmc4e test started 20230907
+pubkey: 04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f
+time: 1694102461
+bits: 0x1e0ffff0
+Searching for genesis hash..
+3515.0 hash/s, estimate: 339.4 hgenesis hash found!
+### nonce: 1756188
+### genesis hash: 07174e3b544fbed5bddb318507c5e8caf244e284e723a086001b642164302933
+
+/home/dev/coin/mtmc4e/src/chainparamsseeds.h
+
+contrib -> seeds를 들어가면
+nodes_test와 nodes_main의 파
+122.35.243.20
+
+cd /home/dev/coin/mtmc4e/contrib/seeds
+python3 generate-seeds.py . > ../../src/chainparamsseeds.h
+
+
+/home/dev/coin/mtmc4e/src/qt/res/icons/bitcoin.png
