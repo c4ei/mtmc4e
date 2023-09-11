@@ -21,8 +21,8 @@ find ./ -type f -readable -writable -exec sed -i "s/mtc4eid/mtc4eid/g" {} \;
 find ./ -type f -readable -writable -exec sed -i "s/mtc4eis/mtc4eis/g" {} \;
 find ./ -type f -readable -writable -exec sed -i "s/wphotons/wwphotons/g" {} \;
 find ./ -type f -readable -writable -exec sed -i "s/MTC4EI/MTC4EI/g" {} \;
-find . -type f -print0 | xargs -0 sed -i 's/9336/9336/g'
-find . -type f -print0 | xargs -0 sed -i 's/9337/9337/g'
+find . -type f -print0 | xargs -0 sed -i 's/9333/9336/g'
+find . -type f -print0 | xargs -0 sed -i 's/9334/9337/g'
 find . -type f -print0 | xargs -0 sed -i 's/19336/19336/g'
 find . -type f -print0 | xargs -0 sed -i 's/19339/19339/g'
 

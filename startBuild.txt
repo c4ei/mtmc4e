@@ -1,4 +1,4 @@
-cd ..
+############## window build ######################
 cd mtmc4e/
 PATH=$(echo "$PATH" | sed -e 's/:\/mnt.*//g')
 sudo bash -c "echo 0 > /proc/sys/fs/binfmt_misc/status"
@@ -10,3 +10,11 @@ CONFIG_SITE=$PWD/depends/x86_64-w64-mingw32/share/config.site ./configure --pref
 make -j 4
 make install DESTDIR=/home/dev/coin/exe/win/mtmc4e
 
+
+
+############## unix build ######################################################################
+cd /home/dev/coin/mtmc4e
+./autogen.sh
+CONFIG_SITE=$PWD/depends/x86_64-pc-linux-gnu/share/config.site ./configure --prefix=/
+make -j 4
+make install DESTDIR=/home/dev/coin/exe/linux
