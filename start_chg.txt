@@ -1,7 +1,9 @@
 메인넷
-rpc포트 : 9525
-tcp포트 : 9535
-nDefaultPort = 9337;
+- MTC4ei TCP port 9337 (instead of 8333)
+- RPC TCP port 9336 (instead of 8332)
+- Testnet TCP port 19337 (instead of 18333)
+- Testnet RPC TCP port 19336 (instead of 18332)
+
 
 테스트넷
 rpc포트 : 19525
@@ -43,5 +45,5 @@ nodes_test와 nodes_main의 파
 cd /home/dev/coin/mtmc4e/contrib/seeds
 python3 generate-seeds.py . > ../../src/chainparamsseeds.h
 
-
+icon change --> /home/dev/coin/mtmc4e/share/pixmaps 
 /home/dev/coin/mtmc4e/src/qt/res/icons/bitcoin.png
