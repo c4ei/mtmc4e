@@ -12,9 +12,14 @@ make install DESTDIR=/home/dev/coin/exe/win/mtmc4e
 
 
 
-############## unix build ######################################################################
+############## ubuntu build ######################################################################
 cd /home/dev/coin/mtmc4e
+MTC4EI_ROOT=$(pwd)
+BDB_PREFIX="${MTC4EI_ROOT}/db4"
+mkdir -p $BDB_PREFIX
+./contrib/install_db4.sh 'passwd'
 ./autogen.sh
-CONFIG_SITE=$PWD/depends/x86_64-pc-linux-gnu/share/config.site ./configure --prefix=/
+./configure BDB_LIBS="-L${BDB_PREFIX}/lib -ldb_cxx-4.8" BDB_CFLAGS="-I${BDB_PREFIX}/include"
 make -j 4
-make install DESTDIR=/home/dev/coin/exe/linux
+make install DESTDIR=/home/dev/coin/exe/linux/mtmc4e
+
