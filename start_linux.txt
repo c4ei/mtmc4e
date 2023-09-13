@@ -1,0 +1,22 @@
+sudo apt-get install git
+sudo apt-get install build-essential libtool autotools-dev automake pkg-config bsdmainutils python3
+  sudo apt-get install libssl-dev libevent-dev libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-test-dev libboost-thread-dev
+  boost
+sudo apt-get install libboost-all-dev
+  openssl
+sudo apt install libssl-dev
+
+cd /home/dev/coin
+git clone https://github.com/c4ei/mtmc4e
+cd /home/dev/coin/mtmc4e
+MTC4EI_ROOT=$(pwd)
+BDB_PREFIX="${MTC4EI_ROOT}/db4"
+sudo mkdir -p $BDB_PREFIX
+sudo ./contrib/install_db4.sh 'passwd'
+./autogen.sh
+./configure BDB_LIBS="-L${BDB_PREFIX}/lib -ldb_cxx-4.8" BDB_CFLAGS="-I${BDB_PREFIX}/include"
+make -j 4
+make install DESTDIR=/home/dev/coin/exe/linux/mtmc4e
+
+################
+./configure BDB_LIBS="-L${BDB_PREFIX}/lib -ldb_cxx-4.8" BDB_CFLAGS="-I${BDB_PREFIX}/include" --enable-cxx --disable-shared --with-pic --prefix=$BDB_PREFIX
